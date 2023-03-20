@@ -27,5 +27,5 @@ plugins:
 custom:
   datadog:
     site: us5.datadoghq.com
-    apiKey: arn:aws:secretsmanager:us-east-1:151997680256:secret:DdApiKeySecret-SS0MpwticRBe-xYPWfp
+    apiKeySecretArn: arn:aws:secretsmanager:us-east-1:151997680256:secret:datadogapikey-TaU5cI
 
