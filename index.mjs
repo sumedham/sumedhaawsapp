@@ -2,6 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const axios = require('axios');
 const { sendDistributionMetric } = require('datadog-lambda-js');
+const tracer = require('dd-trace');
 
 export const handler = async(event, context, callback) => {
 
@@ -23,6 +24,11 @@ console.log(fullURL)
       'product:aws-node-test'            // First tag
 
   );
+
+  tracer.trace('hello.world', () => {
+    console.log('Hello, World!');
+});
+
 
 
 return axios(config)
