@@ -1,6 +1,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const axios = require('axios');
+const { sendDistributionMetric } = require('datadog-lambda-js');
 
 export const handler = async(event, context, callback) => {
 
@@ -14,6 +15,14 @@ export const handler = async(event, context, callback) => {
         headers: { }
 };
 console.log(fullURL)
+
+
+  sendDistributionMetric(
+      'lambda.testing_custom_metric', // Metric name
+      12.45,                      // Metric value
+      'product:aws-node-test'            // First tag
+
+  );
 
 
 return axios(config)
